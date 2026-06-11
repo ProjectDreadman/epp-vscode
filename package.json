@@ -1,0 +1,115 @@
+{
+  "name": "epp-language",
+  "displayName": "E++ Language Support",
+  "description": "Full language support for E++ — the erb-powered cousin of C++. Includes syntax highlighting, IntelliSense, snippets, diagnostics, and compiler integration.",
+  "version": "1.0.0",
+  "publisher": "epp-lang",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Programming Languages", "Snippets", "Linters"],
+  "icon": "icon.png",
+  "activationEvents": ["onLanguage:epp"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "epp",
+        "aliases": ["E++", "epp"],
+        "extensions": [".epp", ".erb"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "epp",
+        "scopeName": "source.epp",
+        "path": "./syntaxes/epp.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "epp",
+        "path": "./snippets/epp.code-snippets"
+      }
+    ],
+    "commands": [
+      {
+        "command": "epp.compile",
+        "title": "E++: Compile File",
+        "icon": "$(play)"
+      },
+      {
+        "command": "epp.compileAndRun",
+        "title": "E++: Compile & Run",
+        "icon": "$(debug-start)"
+      },
+      {
+        "command": "epp.showKeywordReference",
+        "title": "E++: Show Keyword Reference"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "epp.compileAndRun",
+          "when": "resourceLangId == epp",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "epp.compile",
+          "when": "resourceLangId == epp",
+          "group": "epp"
+        },
+        {
+          "command": "epp.compileAndRun",
+          "when": "resourceLangId == epp",
+          "group": "epp"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "E++ Language",
+      "properties": {
+        "epp.compilerPath": {
+          "type": "string",
+          "default": "erppc",
+          "description": "Path to the E++ compiler executable (default: 'erppc' on PATH)"
+        },
+        "epp.compilerArgs": {
+          "type": "array",
+          "default": ["-o", "${fileBasenameNoExtension}"],
+          "description": "Additional compiler arguments"
+        },
+        "epp.showDiagnosticsOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run diagnostics when the file is saved"
+        },
+        "epp.fallbackToCpp": {
+          "type": "boolean",
+          "default": true,
+          "description": "Fall back to g++ if the E++ compiler is not found (for testing)"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "epp.compileAndRun",
+        "key": "ctrl+shift+e",
+        "mac": "cmd+shift+e",
+        "when": "resourceLangId == epp"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
