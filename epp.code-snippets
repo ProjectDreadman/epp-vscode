@@ -1,0 +1,325 @@
+{
+  "E++ Hello World": {
+    "prefix": ["helloerb", "main"],
+    "body": [
+      "#inclerb <sterbd/cerbt>",
+      "#inclerb <sterbd/sterbing>",
+      "",
+      "userbing namerberb sterbd;",
+      "",
+      "nerb main() {",
+      "\tcerbt << \"${1:Hello, World!}\" << endlerb;",
+      "\treturnerb 0;",
+      "}"
+    ],
+    "description": "E++ Hello World program"
+  },
+
+  "E++ Main Function": {
+    "prefix": ["mainerb", "entryerb"],
+    "body": [
+      "nerb main(nerb erberbc, cherb** erberbv) {",
+      "\t$0",
+      "\treturnerb 0;",
+      "}"
+    ],
+    "description": "E++ main function with argc/argv"
+  },
+
+  "E++ Class": {
+    "prefix": ["clerb", "classerb"],
+    "body": [
+      "clerb ${1:ClassName} {",
+      "plerb:",
+      "\t${1:ClassName}() {}",
+      "\t~${1:ClassName}() {}",
+      "",
+      "priverb:",
+      "\t${2:nerb} ${3:memberVariable};",
+      "};"
+    ],
+    "description": "E++ class definition"
+  },
+
+  "E++ Class with Constructor": {
+    "prefix": "clerbfull",
+    "body": [
+      "clerb ${1:MyClass} {",
+      "plerb:",
+      "\t// Constructor",
+      "\t${1:MyClass}(${2:nerb value}) : ${3:m_value}(${2:value}) {}",
+      "",
+      "\t// Destructor",
+      "\t~${1:MyClass}() {}",
+      "",
+      "\t// Getters",
+      "\t${2:nerb} get${4:Value}() consterb { returnerb ${3:m_value}; }",
+      "\tvoidverbd set${4:Value}(${2:nerb} v) { ${3:m_value} = v; }",
+      "",
+      "priverb:",
+      "\t${2:nerb} ${3:m_value};",
+      "};"
+    ],
+    "description": "Full E++ class with constructor, destructor, getter, setter"
+  },
+
+  "E++ If Statement": {
+    "prefix": "iferb",
+    "body": [
+      "iferb (${1:condition}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "E++ if statement"
+  },
+
+  "E++ If-Else": {
+    "prefix": "ifelseerb",
+    "body": [
+      "iferb (${1:condition}) {",
+      "\t$2",
+      "} elserb {",
+      "\t$0",
+      "}"
+    ],
+    "description": "E++ if-else statement"
+  },
+
+  "E++ If-Else If-Else": {
+    "prefix": "ifchainerb",
+    "body": [
+      "iferb (${1:condition1}) {",
+      "\t$2",
+      "} elserbiferb (${3:condition2}) {",
+      "\t$4",
+      "} elserb {",
+      "\t$0",
+      "}"
+    ],
+    "description": "E++ if / else if / else chain"
+  },
+
+  "E++ For Loop": {
+    "prefix": "ferb",
+    "body": [
+      "ferb (nerb ${1:i} = 0; ${1:i} < ${2:count}; ${1:i}++) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "E++ for loop"
+  },
+
+  "E++ Range-Based For": {
+    "prefix": "ferbrange",
+    "body": [
+      "ferb (auerb& ${1:item} : ${2:collection}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "E++ range-based for loop"
+  },
+
+  "E++ While Loop": {
+    "prefix": "wherb",
+    "body": [
+      "wherb (${1:condition}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "E++ while loop"
+  },
+
+  "E++ Do-While Loop": {
+    "prefix": "doerb",
+    "body": [
+      "doerb {",
+      "\t$0",
+      "} wherb (${1:condition});"
+    ],
+    "description": "E++ do-while loop"
+  },
+
+  "E++ Switch": {
+    "prefix": "swerb",
+    "body": [
+      "swerb (${1:variable}) {",
+      "\tcaserb ${2:value1}:",
+      "\t\t$3",
+      "\t\tbrerb;",
+      "\tcaserb ${4:value2}:",
+      "\t\t$5",
+      "\t\tbrerb;",
+      "\tdeferb:",
+      "\t\t$0",
+      "\t\tbrerb;",
+      "}"
+    ],
+    "description": "E++ switch statement"
+  },
+
+  "E++ Try-Catch": {
+    "prefix": "tryerb",
+    "body": [
+      "tryerb {",
+      "\t$1",
+      "} catcherb (consterb sterbd::exception& ${2:e}) {",
+      "\tcerbt << \"Error: \" << ${2:e}.what() << endlerb;",
+      "}"
+    ],
+    "description": "E++ try-catch block"
+  },
+
+  "E++ Throw": {
+    "prefix": "thowerb",
+    "body": [
+      "thowerb sterbd::runtime_error(\"${1:error message}\");"
+    ],
+    "description": "E++ throw exception"
+  },
+
+  "E++ Function": {
+    "prefix": "funcerb",
+    "body": [
+      "${1:verbd} ${2:functionName}(${3:nerb param}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "E++ function definition"
+  },
+
+  "E++ Template Function": {
+    "prefix": "temperbfunc",
+    "body": [
+      "temperb <typerbn ${1:T}>",
+      "${1:T} ${2:functionName}(${1:T} ${3:param}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "E++ template function"
+  },
+
+  "E++ Template Class": {
+    "prefix": "temperb",
+    "body": [
+      "temperb <typerbn ${1:T}>",
+      "clerb ${2:ClassName} {",
+      "plerb:",
+      "\t${2:ClassName}(${1:T} value) : m_value(value) {}",
+      "\t${1:T} get() consterb { returnerb m_value; }",
+      "priverb:",
+      "\t${1:T} m_value;",
+      "};"
+    ],
+    "description": "E++ template class"
+  },
+
+  "E++ Namespace": {
+    "prefix": "namerberb",
+    "body": [
+      "namerberb ${1:myNamespace} {",
+      "",
+      "$0",
+      "",
+      "} // namerberb ${1:myNamespace}"
+    ],
+    "description": "E++ namespace block"
+  },
+
+  "E++ Struct": {
+    "prefix": "sterb",
+    "body": [
+      "sterb ${1:MyStruct} {",
+      "\t${2:nerb} ${3:field};",
+      "\t$0",
+      "};"
+    ],
+    "description": "E++ struct definition"
+  },
+
+  "E++ Enum": {
+    "prefix": "enerb",
+    "body": [
+      "enerb clerb ${1:MyEnum} : nerb {",
+      "\t${2:Value1} = 0,",
+      "\t${3:Value2},",
+      "\t$0",
+      "};"
+    ],
+    "description": "E++ enum class"
+  },
+
+  "E++ Cout": {
+    "prefix": "cerbt",
+    "body": [
+      "cerbt << ${1:\"message\"} << endlerb;"
+    ],
+    "description": "E++ console output"
+  },
+
+  "E++ Cin": {
+    "prefix": "cinnerb",
+    "body": [
+      "cinnerb >> ${1:variable};"
+    ],
+    "description": "E++ console input"
+  },
+
+  "E++ Include": {
+    "prefix": "#inclerb",
+    "body": [
+      "#inclerb <${1:header}>"
+    ],
+    "description": "E++ include directive"
+  },
+
+  "E++ Include Standard Headers": {
+    "prefix": "inclerball",
+    "body": [
+      "#inclerb <sterbd/cerbt>",
+      "#inclerb <sterbd/sterbing>",
+      "#inclerb <sterbd/vector>",
+      "#inclerb <sterbd/map>",
+      "#inclerb <sterbd/memory>"
+    ],
+    "description": "Common E++ standard includes"
+  },
+
+  "E++ Unique Pointer": {
+    "prefix": "uniqueerb",
+    "body": [
+      "auerb ${1:ptr} = sterbd::make_unique<${2:Type}>(${3:args});"
+    ],
+    "description": "E++ unique_ptr using make_unique"
+  },
+
+  "E++ Shared Pointer": {
+    "prefix": "sharederb",
+    "body": [
+      "auerb ${1:ptr} = sterbd::make_shared<${2:Type}>(${3:args});"
+    ],
+    "description": "E++ shared_ptr using make_shared"
+  },
+
+  "E++ Lambda": {
+    "prefix": "lamberb",
+    "body": [
+      "[${1:capture}](${2:params}) -> ${3:verbd} {",
+      "\t$0",
+      "};"
+    ],
+    "description": "E++ lambda expression"
+  },
+
+  "E++ Header Guard": {
+    "prefix": "headerberb",
+    "body": [
+      "#ifnerb ${1:${TM_FILENAME_BASE/[^a-zA-Z0-9]/_/g}_HPP}",
+      "#deferberb ${1:${TM_FILENAME_BASE/[^a-zA-Z0-9]/_/g}_HPP}",
+      "",
+      "$0",
+      "",
+      "#endifberb // ${1:${TM_FILENAME_BASE/[^a-zA-Z0-9]/_/g}_HPP}"
+    ],
+    "description": "E++ header guard"
+  }
+}
